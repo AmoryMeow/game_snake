@@ -21,11 +21,26 @@ const snake = {
   y: 192,
   dx: 0,
   dy: -config.sizeCell,
-  tail: [{x: 160, y: 208}],
+  tail: [],
 }
 
 let pointToAdd = [];
 
+function refreshGame() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  snake.x = 160;
+  snake.y = 192;
+  snake.dx = 0;
+  snake.dy = -config.sizeCell;
+  snake.tail= [];
+
+  positionPoint();
+
+  drawPoint();
+  drawSnake();
+
+}
 function game() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   //обновляем точку
@@ -90,46 +105,46 @@ const btnStart = document.querySelector('.btn-start');
 const btnStop = document.querySelector('.btn-stop');
 
 function step() {
-   //очищаем поле
-   context.clearRect(0, 0, canvas.width, canvas.height);
-   //запоминаем текущую точку
-   const current = {x: snake.x, y: snake.y}
-   //смещаем змейку
-   snake.x += snake.dx;
-   snake.y += snake.dy;
+  //очищаем поле
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  //запоминаем текущую точку
+  const current = {
+    x: snake.x,
+    y: snake.y
+  }
+  //смещаем змейку
+  snake.x += snake.dx;
+  snake.y += snake.dy;
 
-   const del = snake.tail.pop();
-   console.log('del: ', del);
-   const p = pointToAdd.find((item) => {
-     return item.x === del.x && item.y === del.y
-   });
-   if (p) {
-     //если есть точка к добавлению, то добавляем к хвосту
-     snake.tail.push(p);
-     pointToAdd = pointToAdd.filter((item) => {
-       return !(item.x === p.x && item.y === p.y);
-     })
-   }
-   snake.tail.unshift(current);
+  if (snake.tail.length > 0) {
+    //сдвигаем хвост
+    snake.tail.pop();
+    snake.tail.unshift(current);
+  }
 
-   if (snake.x === point.x && snake.y === point.y) {
-     //добавить эту точку в хвост??
-     pointToAdd.push({x: snake.x, y: snake.y});
-     console.log('pointToAdd: ', pointToAdd);
-     //перемещаем точку
-     positionPoint();
-     score += 1;
-   }
+  if (snake.x === point.x && snake.y === point.y) {
 
-   //перерисовываем змейку
-   drawSnake();
-   //перерисовываем точку
-   drawPoint();
+    //в хвосте удваиваем последнюю точку
+    if (snake.tail.length > 0) {
+      snake.tail.push(snake.tail[snake.tail.length-1]);
+    } else {
+      //или добавляем в хвост первую точку
+      snake.tail.push({x: snake.x, y: snake.y})
+    }
+
+    //перемещаем точку
+    positionPoint();
+    score += 1;
+  }
+
+  //перерисовываем змейку
+  drawSnake();
+  //перерисовываем точку
+  drawPoint();
 }
 
 function stopTimer() {
   clearInterval(timer);
-  return time;
 }
 
 btnStart.addEventListener('click', (evt) => {
@@ -145,6 +160,7 @@ btnStart.addEventListener('click', (evt) => {
 btnStop.addEventListener('click', (evt) => {
   evt.preventDefault();
   stopTimer()
+  refreshGame();
 })
 
 
