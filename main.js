@@ -99,9 +99,20 @@ document.addEventListener("keydown", function (e) {
 	}
 });
 
+function checkCrash() {
+  return snake.tail.some((item) => {
+    return snake.x === item.x && snake.y === item.y;
+  })
+}
+
 game()
 
+function gameOver() {
+  stopTimer();
+  alert('Вы запутались...')
+}
 const btnStart = document.querySelector('.btn-start');
+const btnPause = document.querySelector('.btn-pause');
 const btnStop = document.querySelector('.btn-stop');
 
 function step() {
@@ -116,11 +127,27 @@ function step() {
   snake.x += snake.dx;
   snake.y += snake.dy;
 
+  if (snake.y > config.height) {
+    snake.y = 0;
+  } else if (snake.y < 0) {
+    snake.y = config.height - config.sizeCell;
+  }
+  if (snake.x > config.width) {
+    snake.x = 0;
+  } else if (snake.x < 0) {
+    snake.x = config.width - config.sizeCell;
+  }
+
+
   if (snake.tail.length > 0) {
     //сдвигаем хвост
     snake.tail.pop();
     snake.tail.unshift(current);
   }
+
+  if (checkCrash()) {
+    gameOver();
+  };
 
   if (snake.x === point.x && snake.y === point.y) {
 
@@ -155,6 +182,12 @@ btnStart.addEventListener('click', (evt) => {
   },250);
 
 
+})
+
+btnPause.addEventListener('click', (evt) => {
+  evt.preventDefault();
+
+  stopTimer()
 })
 
 btnStop.addEventListener('click', (evt) => {
