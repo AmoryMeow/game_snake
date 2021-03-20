@@ -67,8 +67,17 @@ function getRandomInt(max) {
 }
 
 function positionPoint() {
-  point.x = getRandomInt(config.width/config.sizeCell)*config.sizeCell;
-  point.y = getRandomInt(config.height/config.sizeCell)*config.sizeCell;
+  let repeateRandom = true;
+  while (repeateRandom) {
+    point.x = getRandomInt(config.width/config.sizeCell)*config.sizeCell;
+    point.y = getRandomInt(config.height/config.sizeCell)*config.sizeCell;
+
+    const pointOnSnake = (point.x === snake.x && point.y === snake.y)
+      || snake.tail.some((item) => {
+        return item.x === point.x && item.y === point.y;
+      });
+    repeateRandom = pointOnSnake;
+  }
 }
 
 function drawSnake() {
