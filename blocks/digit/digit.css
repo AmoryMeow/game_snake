@@ -5,18 +5,13 @@
   align-items: center;
   justify-content: center;
   font-size: 2px;
-  --bgcolor: #e05b39;
+  --bgcolor: rgba(255, 255, 255, 0.15);
 }
 
 .digit__wrapper {
   width: 100%;
   display: flex;
   justify-content: space-between;
-}
-
-.digit__block_disable {
-  --bgcolor: #FFFFFF;
-  opacity: .25;
 }
 
 .digit__block {
@@ -28,6 +23,10 @@
   position: absolute;
   content: '';
   border: 1em solid transparent;
+}
+
+.digit__block_active {
+  --bgcolor: #e05b39;
 }
 
 /*вертикальные блоки*/
