@@ -1,0 +1,11 @@
+.score {
+  display: grid;
+  grid-template-columns: repeat(4, 11.5em);
+  grid-column-gap: 2em;
+  font-size: 2px;
+  background-color: #161618;
+  padding: 2em;
+  max-height: 24em;
+  box-sizing: border-box;
+}
+

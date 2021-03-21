@@ -8,23 +8,96 @@
 </head>
 <body class="page">
   <header class="header">
-
+    <h1 class="header__title">Змейка</h1>
   </header>
 
   <main class="content">
+    <div class="settings">
+
+      <div class="buttons">
+        <button class="button button_play" title="Начать">
+          <div class="button_img-play"></div>
+        </button>
+        <button class="button button_pause" title="Пауза">
+          <div class="button_img-pause"></div>
+        </button>
+        <button class="button button_stop" title="Остановить">
+          <div class="button_img-stop"></div>
+        </button>
+      </div>
+
+      <!-- <div class="speed">
+        <label><input type="checkbox"> ускорять </label>
+      </div> -->
+
+      <div class="score">
+        <div class="digit">
+          <div class="digit__block digit__block_horizontal digit__block_top"></div>
+          <div class="digit__wrapper">
+            <div class="digit__block digit__block_vertical digit__block_left-top"></div>
+            <div class="digit__block digit__block_vertical digit__block_right-top"></div>
+          </div>
+          <div class="digit__block digit__block_horizontal digit__block_middle"></div>
+          <div class="digit__wrapper">
+            <div class="digit__block digit__block_vertical digit__block_left-bottom"></div>
+            <div class="digit__block digit__block_vertical digit__block_right-bottom"></div>
+          </div>
+          <div class="digit__block digit__block_horizontal digit__block_bottom"></div>
+        </div>
+        <div class="digit">
+          <div class="digit__block digit__block_horizontal digit__block_top"></div>
+          <div class="digit__wrapper">
+            <div class="digit__block digit__block_vertical digit__block_left-top"></div>
+            <div class="digit__block digit__block_vertical digit__block_right-top"></div>
+          </div>
+          <div class="digit__block digit__block_horizontal digit__block_middle"></div>
+          <div class="digit__wrapper">
+            <div class="digit__block digit__block_vertical digit__block_left-bottom"></div>
+            <div class="digit__block digit__block_vertical digit__block_right-bottom"></div>
+          </div>
+          <div class="digit__block digit__block_horizontal digit__block_bottom"></div>
+        </div>
+        <div class="digit">
+          <div class="digit__block digit__block_horizontal digit__block_top"></div>
+          <div class="digit__wrapper">
+            <div class="digit__block digit__block_vertical digit__block_left-top"></div>
+            <div class="digit__block digit__block_vertical digit__block_right-top"></div>
+          </div>
+          <div class="digit__block digit__block_horizontal digit__block_middle"></div>
+          <div class="digit__wrapper">
+            <div class="digit__block digit__block_vertical digit__block_left-bottom"></div>
+            <div class="digit__block digit__block_vertical digit__block_right-bottom"></div>
+          </div>
+          <div class="digit__block digit__block_horizontal digit__block_bottom"></div>
+        </div>
+        <div class="digit">
+          <div class="digit__block digit__block_horizontal digit__block_top"></div>
+          <div class="digit__wrapper">
+            <div class="digit__block digit__block_vertical digit__block_left-top"></div>
+            <div class="digit__block digit__block_vertical digit__block_right-top"></div>
+          </div>
+          <div class="digit__block digit__block_horizontal digit__block_middle"></div>
+          <div class="digit__wrapper">
+            <div class="digit__block digit__block_vertical digit__block_left-bottom"></div>
+            <div class="digit__block digit__block_vertical digit__block_right-bottom"></div>
+          </div>
+          <div class="digit__block digit__block_horizontal digit__block_bottom"></div>
+        </div>
+      </div>
+
+    </div>
 
     <div class="field">
-      <canvas id="canvas" width="320" height="400"></canvas>
+      <canvas id="canvas" width="400" height="320"></canvas>
     </div>
   </main>
 
   <footer class="footer">
-  <button class="btn-start">start</button>
-  <button class="btn-pause">pause</button>
-  <button class="btn-stop">stop</button>
+
   </footer>
 
 
 </body>
-<script src="main.js"></script>
+<!-- <script src="main.js"></script> -->
+<script type="module" src="./script/index.js" ></script>
 </html>

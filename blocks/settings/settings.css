@@ -1,0 +1,9 @@
+.settings {
+  padding: 10px calc((100% - 768px) / 2);
+  display: flex;
+  justify-content: space-between;
+  font-size: 2px;
+  max-height: calc( 24em + 20px );
+  box-sizing: border-box;
+  background-color: #161618;
+}
