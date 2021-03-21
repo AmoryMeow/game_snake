@@ -15,6 +15,7 @@ const set = {
   7: ['block1', 'block3', 'block6'],
   8: ['block1', 'block2', 'block3', 'block4', 'block5', 'block6', 'block7'],
   9: ['block1', 'block2', 'block3', 'block4', 'block6', 'block7'],
+  0: ['block1', 'block2', 'block3', 'block5', 'block6', 'block7'],
 }
 
 const score = document.querySelector(scoreSelector);
@@ -36,9 +37,6 @@ function clearScore() {
 }
 
 function drawNumber(digit, num) {
-  if (num === 0) {
-    return;
-  }
 
   set[num].forEach((blockId) => {
     const block = digit.querySelector(`#${blockId}`);
