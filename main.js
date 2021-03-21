@@ -1,3 +1,4 @@
+//первая версия алгоритма без использования ООП и структуры файлов
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
