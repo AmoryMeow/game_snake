@@ -49,7 +49,7 @@ function drawNumber(digit, num) {
 
 }
 
-function draw(number) {
+export function drawScore(number) {
   if (number > maxNumber) {
     number = maxNumber
   }
@@ -71,4 +71,3 @@ function draw(number) {
 
 }
 
-draw(1234);
