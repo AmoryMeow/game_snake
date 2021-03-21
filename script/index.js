@@ -7,6 +7,7 @@ import { drawScore } from './drawScore.js';
 let score = 0;
 let timer;
 let restartGame = false;
+let speed = 1;
 
 /*** объекты ***/
 const snake = new Snake();
@@ -24,7 +25,7 @@ function stopTimer() {
 }
 
 function startTimer(speed) {
-  const timeout = Math.max(300 - speed * 25, 50);
+  const timeout = Math.max(325 - speed * 25, 50);
   timer = setInterval( function() {
     step();
   },timeout);
@@ -122,6 +123,13 @@ function step() {
 
   canvas.drawPoint(point);
   canvas.drawSnake(snake);
+
+  //ускорение
+  if (score >  speed * 10) {
+    speed += 1;
+    stopTimer()
+    startTimer(speed);
+  }
 }
 
 function game() {
