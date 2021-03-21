@@ -70,6 +70,7 @@ function refreshGame() {
   score = 0;
   drawScore(score);
   timer = 0;
+  speed = 1;
   restartGame = false;
 
   point.getPosition();
